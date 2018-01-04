@@ -9,22 +9,24 @@
 		<form method="GET" action="/vind">
 			<select name="bron">
 				{% for bron in sources %}
-				<option value="{{bron}}">{{bron}}</option>
+				<option value="{{bron}}"  {%if (bron == selected) %} selected=true {%endif%} >{{bron}}</option>
 				{% endfor %}
 			</select>
-			<input type="text" size="40" name="q" id="q">
+			<input type="text" size="40" name="q" id="q" value="{{q|default('')}}">
 			<br />
 			<input type="submit" value="Vind!">
 		</form>
 		{% if results is defined %}
 		     <h2>Aantal resulaten: {{response.sru.nr_of_records}}</h2>
 		     {% for result in results %}
-		       {{loop.index}}
-		       <em>datum</em> {{result.dates|default('-')}} <br>
-		       <em>ident</em> {{result.identifiers|default('-')}} <br>
-		       <em>abstract</em> {{result.abstract|default('-')}} <br>
+		       <div>
+		       <span class="count">{{loop.index}}</span>
 		       <em>title</em> {{result.titles|default('-')}} <br>
+		       <em>datum</em> {{result.dates|default('-')}} <br>
+		       <em>ident</em><a href="{{result.identifiers|default('-')}}">{{result.identifiers|default('-')}}</a></a></a> <br>
+		       <em>abstract</em> {{result.abstracts|default('-')}} <br>
 		       <em>summary</em> {{result.fulltext|default('-')}}
+		       </div>
 		     {% endfor %}
 		{% endif %}
 	</body>
