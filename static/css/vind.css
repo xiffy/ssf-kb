@@ -1,0 +1,17 @@
+/** vind.css
+    kleurtjes, fontjes en marges voor zoekresulatetn */
+
+body {
+	background: #ececec;
+}
+
+.count { float: right;
+	       color: #232323;
+	       display: inline-block;
+	       }
+.result {
+		background: #fff;
+	  border: 1px solid black;
+	  padding: 10px;
+	  margin-bottom: 10px;
+	  }

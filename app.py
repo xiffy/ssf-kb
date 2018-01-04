@@ -32,6 +32,7 @@ def vinden():
         q = (' AND ').join(q)
 
     q_response = sru.search(q, source)
+
     if q_response:
         oai_handler = oai
         oai_handler.__init__(current_set=source)

@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>KB Python API -poc-</title>
+		<link rel="stylesheet" href="/static/css/vind.css">
 	</head>
 	<body>
 		<h1>Vinden</h1>
@@ -19,7 +20,7 @@
 		{% if results is defined %}
 		     <h2>Aantal resulaten: {{response.sru.nr_of_records}}</h2>
 		     {% for result in results %}
-		       <div>
+		       <div class="result">
 		       <span class="count">{{loop.index}}</span>
 		       <em>title</em> {{result.titles|default('-')}} <br>
 		       <em>datum</em> {{result.dates|default('-')}} <br>
