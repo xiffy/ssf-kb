@@ -20,7 +20,7 @@ if app.debug:
 
 @app.route("/")
 def binnen():
-    payload = render_template('home.html', sources=sorted(sources))
+    payload = render_template('home.html', sources=sorted(sources), selected = '')
     return payload
 
 @app.route("/vind")
