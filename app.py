@@ -30,6 +30,8 @@ def vinden():
     if q and source:
         q = q.split()
         q = (' AND ').join(q)
+    if SETS[source].get('extra_query'):
+        q = '%s AND %s' % (q, SETS[source]['extra_query'])
 
     q_response = sru.search(q, source)
 
@@ -66,6 +68,7 @@ def vinden():
                                    selected = source,
                                    q = request.args.get('q'))
     else:
-        payload = 'Sorry, we screwed up'
+        payload = render_template('home.html', sources=sorted(sources), selected = source, q = request.args.get('q'))
+
     return payload
 
