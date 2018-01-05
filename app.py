@@ -56,7 +56,7 @@ def vinden():
                             result['fulltext'] = None
 
             result['dates'] = ' '.join(str(el) for el in record.dates)
-            result['identifiers'] = '{}{}'.format(SETS[source]['resolver'], ''.join(str(el) for el in record.identifiers))
+            result['identifiers'] = '{}'.format( '|'.join(str(el) for el in record.identifiers if el.startswith('http') ))
             result['abstracts'] = ' '.join(str(el) for el in record.abstracts)
             result['titles'] = ' '.join(str(el) for el in record.titles)
             results.append(result)
