@@ -29,7 +29,7 @@
 		         <p>{{result.abstracts}} </p>
 		       {% endif %}
 		       {% if result.fulltext is defined and result.fulltext > '' %}
-		         <p> {{result.fulltext}} </p>
+		         <p> {{result.fulltext|safe}} </p>
 		       {% endif %}
 		       </div>
 		     {% endfor %}

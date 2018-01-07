@@ -47,6 +47,7 @@ def vinden():
             result = {}
             i += 1
             if i < 10:
+                #print ('OAI: %s' % record.identifiers[0])
                 r = oai_handler.get(record.identifiers[0])
                 if r.alto:
                     for alto in r.alto:
@@ -54,6 +55,8 @@ def vinden():
                             result['fulltext'] = alto_to_text(alto)
                         else:
                             result['fulltext'] = None
+                elif source == 'BYVANCK':
+                    result['fulltext'] = '<img src="%s" class="resultthumbnail" />' % record.identifiers[0]
 
             result['dates'] = ' '.join(str(el) for el in record.dates)
             result['identifiers'] = '{}'.format( '|'.join(str(el) for el in record.identifiers if el.startswith('http') ))

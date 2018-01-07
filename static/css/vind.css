@@ -10,8 +10,14 @@ body {
 	       display: inline-block;
 	       }
 .result {
+    clear: both;
 		background: #fff;
 	  border: 1px solid black;
 	  padding: 10px;
 	  margin-bottom: 10px;
 	  }
+
+.resultthumbnail {
+	max-height: 150px;
+}
+
