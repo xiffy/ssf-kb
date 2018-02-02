@@ -6,7 +6,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 import sys, os
-sys.path.append(os.path.abspath(os.path.join('..', 'KB-python-API')))
+sys.path.append(os.path.abspath(os.path.join('..', '../KB-python-API')))
 
 from kb.nl.collections import SETS
 from kb.nl.api import sru
@@ -44,7 +44,12 @@ def vinden():
         for record in q_response.records:
             if not record.identifiers:
                 continue
+            else:
+                print(record.identifiers)
             result = {}
+            if source == 'BYVANCK':
+               result['fulltext'] = '<img src="%s" class="resultthumbnail" />' % record.identifiers[0]
+
             i += 1
             if i < 10:
                 #print ('OAI: %s' % record.identifiers[0])
@@ -55,8 +60,6 @@ def vinden():
                             result['fulltext'] = alto_to_text(alto)
                         else:
                             result['fulltext'] = None
-                elif source == 'BYVANCK':
-                    result['fulltext'] = '<img src="%s" class="resultthumbnail" />' % record.identifiers[0]
 
             result['dates'] = ' '.join(str(el) for el in record.dates)
             result['identifiers'] = '{}'.format( '|'.join(str(el) for el in record.identifiers if el.startswith('http') ))
@@ -75,3 +78,5 @@ def vinden():
 
     return payload
 
+if __name__ == '__main__':
+    app.run(port=5004)
